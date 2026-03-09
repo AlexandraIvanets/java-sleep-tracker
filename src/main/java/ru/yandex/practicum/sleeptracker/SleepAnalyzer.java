@@ -20,6 +20,10 @@ public class SleepAnalyzer {
     );
 
     public static List<SleepAnalysisResult> analyze(List<SleepingSession> sessions) {
+        if (sessions.isEmpty()) {
+            return List.of();
+        }
+
         return functions.stream()
                 .map(function -> function.apply(sessions))
                 .toList();
